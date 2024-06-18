@@ -35,7 +35,7 @@ public class Main {
             /*
              * 미리 계산한 구간합을 이용해서 각 행마다 구간합을 계산하여 SUM
              * 0 1 2   3
-             * 0 a a+b a+b+c -> 2 ~ 3의 구간합은 3(a+b+c) - 2-1(a) = b+c
+             * 0 a a+b a+b+c -> 2 ~ 3의 구간합은 [3](a+b+c) - [2-1](a) = b+c
              */
             for (int x = x1 - 1; x < x2; x++) {
                 result += prefixSum[x][y2] - prefixSum[x][y1 - 1];
