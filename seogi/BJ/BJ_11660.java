@@ -23,10 +23,13 @@ public class Main {
       arr[i][0] = Integer.parseInt(st.nextToken());
       arr[i][1] = Integer.parseInt(st.nextToken());
     }
+    // 최소값은 한 음식 차이를 못넘음
     long mn = Math.abs(arr[0][0] - arr[0][1]);
+    // 0 ~ 2^N-1 탐색
     for (int i = 0; i < 1 << N; i++) {
       long tmp = i,ssin = 1,ssen = 0;
       int k=0;
+      // 비트마스킹 ex) N = 4, 0101이면 2,4 번째 음식 선택
       for(long j=tmp;j>0;j=(j >> 1),k++)
         if(j%2==1){
           ssin*=arr[k][0];
