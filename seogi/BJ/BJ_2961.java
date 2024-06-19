@@ -6,8 +6,9 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 /*
- * https://www.acmicpc.net/source/79776832
- * java8 / 131876 KB / 760 ms /
+ * 도영이가 만든 맛있는 음식
+ * https://www.acmicpc.net/source/79830646
+ * java8 / 11616 KB / 60 ms /
  */
 public class Main {
   public static void main(String[] args) throws IOException {
@@ -16,9 +17,26 @@ public class Main {
     StringTokenizer st = new StringTokenizer(bf.readLine());
     StringBuilder sb = new StringBuilder();
     int N = Integer.parseInt(st.nextToken());
-    int arr[][] = new int[N][2];
+    long arr[][] = new long[N+1][2];
     for (int i = 0; i < N; i++) {
-
+      st = new StringTokenizer(bf.readLine());
+      arr[i][0] = Integer.parseInt(st.nextToken());
+      arr[i][1] = Integer.parseInt(st.nextToken());
     }
+    // 최소값은 한 음식 차이를 못넘음
+    long mn = Math.abs(arr[0][0] - arr[0][1]);
+    // 0 ~ 2^N-1 탐색
+    for (int i = 0; i < 1 << N; i++) {
+      long tmp = i,ssin = 1,ssen = 0;
+      int k=0;
+      // 비트마스킹 ex) N = 4, 0101이면 2,4 번째 음식 선택
+      for(long j=tmp;j>0;j=(j >> 1),k++)
+        if(j%2==1){
+          ssin*=arr[k][0];
+          ssen+=arr[k][1];
+          mn = Math.min(mn,Math.abs(ssin-ssen));
+        }
+    }
+    System.out.println(mn);
   }
 }
