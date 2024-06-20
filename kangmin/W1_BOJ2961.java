@@ -35,12 +35,12 @@ public class Main {
             materials[i] = new Material(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
         }
 
-        mixMaterials(0, 0, 1, 0);
+        makeFood(0, 0, 1, 0);
 
         System.out.println(result);
     }
 
-    public static void mixMaterials(int count, int idx, int sour, int bitter) {
+    public static void makeFood(int count, int idx, int sour, int bitter) {
         if (0 < count) {
             result = Math.min(result, Math.abs(sour - bitter)); // 음식 값 비교
         }
@@ -53,8 +53,8 @@ public class Main {
             return;
         }
 
-        mixMaterials(count, idx + 1, sour, bitter); // 재료 안 넣기
-        mixMaterials(count + 1, idx + 1, sour * materials[idx].sour, bitter + materials[idx].bitter); // 재료 넣기
+        makeFood(count, idx + 1, sour, bitter); // 재료 안 넣기
+        makeFood(count + 1, idx + 1, sour * materials[idx].sour, bitter + materials[idx].bitter); // 재료 넣기
     }
 
 }
