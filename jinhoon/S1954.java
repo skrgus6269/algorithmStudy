@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 /**
  * 달팽이숫자 D2
  * 풀이: 벽, 숫자를 만나면 방향전환을 해서 숫자를 채움
- * 메모리: kb
- * 시간: ms
+ * 메모리: 25,812kb
+ * 시간: 123ms
  */
 public class S1954 {
 
