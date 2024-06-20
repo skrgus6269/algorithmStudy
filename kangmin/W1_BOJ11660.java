@@ -5,6 +5,10 @@ import java.util.StringTokenizer;
 
 public class Main {
 
+    /**
+    * https://www.acmicpc.net/source/79783843
+    * java11 / 115236 KB / 1220 ms /
+    */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
