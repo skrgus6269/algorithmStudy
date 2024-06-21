@@ -32,7 +32,6 @@ let count = 0;
 
 count = check()? count + 1: count;     
 
-
 for (let i = 0; i < S - P; i++) {
     charCounts[charToIndex(string[i])] -= 1;
     charCounts[charToIndex(string[i + P])] += 1;
