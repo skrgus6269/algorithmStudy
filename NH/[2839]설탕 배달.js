@@ -1,3 +1,9 @@
+/*
+알고리즘: 브루트포스
+시간: 132ms
+메모리: 9336KB
+*/
+
 let input = require('fs').readFileSync('/dev/stdin').toString().trim();
 let min = input;
 
