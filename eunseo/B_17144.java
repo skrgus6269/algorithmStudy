@@ -77,51 +77,27 @@ public class B_17144 {
     }
 
     static private void cleanUp(int check) {
-        int temp = 0;
-        temp = goFront(check);
-        temp = goUp(temp, check, C-1, 0);
-        temp = goBack(temp, 0);
-        goDown(temp, 0,0, check);
+        goDown(check,0, 0);
+        goBack(0);
+        goUp(0, check, C-1);
+        goFront(check);
 
         plus[check][0] = -1;
     }
 
     static private void cleanDown(int check) {
-        int temp = 0;
-        temp = goFront(check);
-        temp = goDown(temp, check,C-1, R);
-        temp = goBack(temp, R-1);
-        goUp(temp, R-1, 0, check);
+        goUp(check, R-1, 0);
+        goBack(R-1);
+        goDown(R-1, check, C-1);
+        goFront(check);
 
         plus[check][0] = -1;
     }
 
-    static private int goFront(int check) {
+    static private int goFront(int row) {
         int pre = 0;
         int temp = 0;
         for(int i = 1; i < C; i++) {
-
-            temp = plus[check][i];
-            plus[check][i] = pre;
-            pre = temp;
-
-        }
-        return temp;
-    }
-
-    static private int goUp(int pre, int start, int col, int end) {
-        int temp = 0;
-        for(int i = start-1; i >= end; i--) {
-            temp = plus[i][col];
-            plus[i][col] = pre;
-            pre = temp;
-        }
-        return temp;
-    }
-
-    static private int goBack(int pre, int row) {
-        int temp = 0;
-        for(int i = C-2; i >= 0; i--) {
             temp = plus[row][i];
             plus[row][i] = pre;
             pre = temp;
@@ -129,13 +105,21 @@ public class B_17144 {
         return temp;
     }
 
-    static private int goDown(int pre, int start, int col, int end) {
-        int temp = 0;
-        for(int i = start+1; i < end; i++) {
-            temp = plus[i][col];
-            plus[i][col] = pre;
-            pre = temp;
+    static private void goUp(int start, int end, int col) {
+        for(int i = start; i < end; i++) {
+            plus[i][col] = plus[i+1][col];
         }
-        return temp;
+    }
+
+    static private void goBack(int row) {
+        for(int i = 0; i < C-1; i++) {
+            plus[row][i] = plus[row][i+1];
+        }
+    }
+
+    static private void goDown(int start, int end, int col) {
+        for(int i = start; i > end; i--) {
+            plus[i][col] = plus[i-1][col];
+        }
     }
 }
