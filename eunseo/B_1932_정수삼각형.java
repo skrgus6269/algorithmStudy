@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
  * 시간: 244 ms
  * 풀이: dp 사용
  */
-public class B_23716 {
+public class B_1932_정수삼각형 {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
